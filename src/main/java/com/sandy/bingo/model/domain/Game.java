@@ -4,8 +4,8 @@ import jakarta.persistence.*;
 import lombok.Data;
 
 @Data
-@Entity
-@Table(name = "games")
+//@Entity
+//@Table(name = "games")
 public class Game {
 
 }
