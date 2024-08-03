@@ -5,7 +5,7 @@ import jakarta.persistence.Table;
 import lombok.Data;
 
 @Data
-@Entity
-@Table(name= "players")
+//@Entity
+//@Table(name= "players")
 public class Song {
 }
