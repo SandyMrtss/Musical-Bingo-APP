@@ -1,8 +1,13 @@
 package com.sandy.bingo.model.dto;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
 
-@Data
-public class PlayerDTO {
 
+@Data
+@AllArgsConstructor
+public class PlayerDTO {
+    private String firstName;
+    private String lastName;
+    private String username;
 }
