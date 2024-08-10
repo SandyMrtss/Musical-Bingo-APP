@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@CrossOrigin(origins = "http://localhost:9000")
+@CrossOrigin(origins = {"http://localhost:9000", "http://localhost:4200"})
 @RestController
 @RequestMapping("/api/v1/bingoGame/players")
 public class PlayerController {
@@ -19,16 +19,17 @@ public class PlayerController {
         this.playerService = playerService;
     }
 
-    @PostMapping("/newPlayer")
-    public ResponseEntity<String> newPlayer(@RequestBody PlayerDTORequest playerDTORequest){
-        playerService.createPlayer(playerDTORequest);
-        return new ResponseEntity<>("Player added successfully", HttpStatus.OK);
+    @PutMapping("/newPlayer")
+    public ResponseEntity<PlayerDTO> newPlayer(@RequestBody PlayerDTORequest playerDTORequest){
+        PlayerDTO playerDTO = playerService.createPlayer(playerDTORequest);
+        return new ResponseEntity<>(playerDTO , HttpStatus.OK);
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<String> updatePlayer(@PathVariable("id") Integer id, PlayerDTORequest playerDTORequest){
-        playerService.updatePlayer(id, playerDTORequest);
-        return new ResponseEntity<>("Player updated successfully", HttpStatus.OK);
+    public ResponseEntity<PlayerDTO> updatePlayer(@PathVariable("id") Integer id, @RequestBody PlayerDTORequest playerDTORequest){
+        System.out.println(playerDTORequest);
+        PlayerDTO playerDTO = playerService.updatePlayer(id, playerDTORequest);
+        return new ResponseEntity<>(playerDTO, HttpStatus.OK);
     }
 
     @GetMapping("/{id}")
