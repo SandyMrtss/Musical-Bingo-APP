@@ -24,16 +24,16 @@ public class PlayerServiceImpl implements PlayerService {
     }
 
     @Override
-    public void createPlayer(PlayerDTORequest playerDTORequest) {
+    public PlayerDTO createPlayer(PlayerDTORequest playerDTORequest) {
         Player player = playerMapper.map(playerDTORequest);
-        playerRepository.save(player);
+        return playerMapper.map(playerRepository.save(player));
     }
 
     @Override
-    public void updatePlayer(Integer id, PlayerDTORequest playerDTORequest) {
+    public PlayerDTO updatePlayer(Integer id, PlayerDTORequest playerDTORequest) {
         Player player = getPlayer(id);
         player.updateFromDTORequest(playerDTORequest);
-        playerRepository.save(player);
+        return playerMapper.map(playerRepository.save(player));
     }
     @Override
     public PlayerDTO getPlayerDTO(Integer id) {
@@ -52,9 +52,10 @@ public class PlayerServiceImpl implements PlayerService {
     }
 
     @Override
-    public void deletePlayer(Integer id) {
+    public PlayerDTO deletePlayer(Integer id) {
         Player player = getPlayer(id);
         playerRepository.delete(player);
+        return playerMapper.map(player);
     }
 
     private Player getPlayer(Integer id) {

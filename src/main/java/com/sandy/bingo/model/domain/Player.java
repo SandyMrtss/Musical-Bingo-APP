@@ -3,9 +3,11 @@ package com.sandy.bingo.model.domain;
 import com.sandy.bingo.model.dto.request.PlayerDTORequest;
 import jakarta.persistence.*;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
 @Entity
+@NoArgsConstructor
 @Table (name= "players", uniqueConstraints = @UniqueConstraint(columnNames = "username"))
 public class Player {
     @Id

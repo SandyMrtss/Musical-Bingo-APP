@@ -7,7 +7,7 @@ import com.sandy.bingo.model.dto.request.PlayerDTORequest;
 public class PlayerDTOMapperImpl implements PlayerDTOMapper {
     @Override
     public PlayerDTO map(Player player) {
-        return new PlayerDTO(player.getFirstName(), player.getLastName(), player.getUsername());
+        return new PlayerDTO(player.getId().toString() ,player.getFirstName(), player.getLastName(), player.getUsername());
     }
 
     @Override
