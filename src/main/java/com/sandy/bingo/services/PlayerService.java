@@ -12,5 +12,6 @@ public interface PlayerService {
     PlayerDTO getPlayerDTO(Integer id);
     List<PlayerDTO> getAllPLayersDTO();
     PlayerDTO deletePlayer(Integer id);
+    Player getPlayer(Integer id);
 
 }
