@@ -5,6 +5,8 @@ import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.*;
+
 @Data
 @Entity
 @NoArgsConstructor
@@ -16,11 +18,14 @@ public class Player {
     private String firstName;
     private String lastName;
     private String username;
+    @OneToMany(mappedBy = "player")
+    private List<Ranking> rankings;
 
     public Player(String firstName, String lastName, String username){
         this.firstName = firstName;
         this.lastName = lastName;
         this.username = username;
+        this.rankings = new ArrayList<>();
     }
 
     public void updateFromDTORequest(PlayerDTORequest playerDTORequest){
