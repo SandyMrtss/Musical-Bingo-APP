@@ -4,7 +4,7 @@ import com.sandy.bingo.model.domain.Player;
 import com.sandy.bingo.model.dto.PlayerDTO;
 import com.sandy.bingo.model.dto.request.PlayerDTORequest;
 import com.sandy.bingo.model.mapper.PlayerDTOMapper;
-import com.sandy.bingo.model.mapper.PlayerDTOMapperImpl;
+import com.sandy.bingo.model.mapper.impl.PlayerDTOMapperImpl;
 import com.sandy.bingo.repository.PlayerRepository;
 import com.sandy.bingo.services.PlayerService;
 import jakarta.persistence.EntityNotFoundException;
@@ -16,8 +16,8 @@ import java.util.Optional;
 
 @Service
 public class PlayerServiceImpl implements PlayerService {
-    PlayerRepository playerRepository;
-    PlayerDTOMapper playerMapper = new PlayerDTOMapperImpl();
+    private final PlayerRepository playerRepository;
+    private final PlayerDTOMapper playerMapper = new PlayerDTOMapperImpl();
 
     public PlayerServiceImpl(PlayerRepository playerRepository){
         this.playerRepository = playerRepository;
@@ -42,7 +42,7 @@ public class PlayerServiceImpl implements PlayerService {
 
     @Override
     public List<PlayerDTO> getAllPLayersDTO() {
-        List<Player> playersList = getAllPLayers();
+        List<Player> playersList = playerRepository.findAll();
         if(playersList.isEmpty()){
             throw new EntityNotFoundException();
         }
@@ -58,7 +58,8 @@ public class PlayerServiceImpl implements PlayerService {
         return playerMapper.map(player);
     }
 
-    private Player getPlayer(Integer id) {
+    @Override
+    public Player getPlayer(Integer id) {
         Optional<Player> player = playerRepository.findById(id);
         if(player.isEmpty()){
             throw new EntityNotFoundException();
@@ -66,7 +67,4 @@ public class PlayerServiceImpl implements PlayerService {
         return player.get();
     }
 
-    private List<Player> getAllPLayers() {
-        return playerRepository.findAll();
-    }
 }

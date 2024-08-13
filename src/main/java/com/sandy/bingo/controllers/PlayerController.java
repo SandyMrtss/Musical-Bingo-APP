@@ -13,7 +13,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/v1/bingoGame/players")
 public class PlayerController {
-    private PlayerService playerService;
+    private final PlayerService playerService;
 
     public PlayerController (PlayerService playerService){
         this.playerService = playerService;
@@ -45,8 +45,8 @@ public class PlayerController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<String> deletePlayer(@PathVariable("id") Integer id) {
-        playerService.deletePlayer(id);
-        return new ResponseEntity<>("Player deleted successfully", HttpStatus.OK);
+    public ResponseEntity<PlayerDTO> deletePlayer(@PathVariable("id") Integer id) {
+        PlayerDTO playerDTO =  playerService.deletePlayer(id);
+        return new ResponseEntity<>(playerDTO, HttpStatus.OK);
     }
 }
