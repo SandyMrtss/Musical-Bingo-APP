@@ -8,7 +8,7 @@ public class BingoAppUtils {
     private final static int POINTS_ELSE = 1;
     private final static int POINTS_LINE = 2;
 
-    public static Integer calculatePoints(Integer position, Boolean isLine){
+    public static Integer calculatePoints(Integer position, boolean isLine){
         int totalPoints;
         if(position > 3) {
             totalPoints = POINTS_ELSE;
