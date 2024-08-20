@@ -8,7 +8,7 @@ import com.sandy.bingo.model.mapper.PlayerDTOMapper;
 public class PlayerDTOMapperImpl implements PlayerDTOMapper {
     @Override
     public PlayerDTO map(Player player) {
-        return new PlayerDTO(player.getId().toString() ,player.getFirstName(), player.getLastName(), player.getUsername());
+        return new PlayerDTO(player.getId() ,player.getFirstName(), player.getLastName(), player.getUsername());
     }
 
     @Override

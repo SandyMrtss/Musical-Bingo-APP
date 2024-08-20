@@ -5,9 +5,8 @@ import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.time.Instant;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 
@@ -21,7 +20,7 @@ public class Game {
     private Integer id;
     private String theme;
     private boolean isPlayed;
-    private Date playedDate;
+    private LocalDateTime playedDate;
     @OneToMany(mappedBy = "game")
     private List<Song> songs;
     @OneToMany(mappedBy = "game")
@@ -36,7 +35,7 @@ public class Game {
 
     public void playGame(){
         this.isPlayed = true;
-        this.playedDate = Date.from(Instant.now());
+        this.playedDate = LocalDateTime.now();
     }
 
     public void updateFromDTORequest(GameDTORequest gameDTORequest){

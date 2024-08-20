@@ -14,11 +14,6 @@ public class SongDTOMapperImpl implements SongDTOMapper {
     }
 
     @Override
-    public Song map(SongDTO songDTO, Game game) {
-        return new Song(songDTO.getId(), songDTO.getTitle(), songDTO.getAuthor(), songDTO.getLink(), game);
-    }
-
-    @Override
     public Song map(SongDTORequest songDTORequest, Game game) {
         return new Song(null, songDTORequest.getTitle(), songDTORequest.getAuthor(), songDTORequest.getLink(), game);
     }

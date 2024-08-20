@@ -7,6 +7,5 @@ import com.sandy.bingo.model.dto.request.SongDTORequest;
 
 public interface SongDTOMapper {
     SongDTO map(Song song);
-    Song map(SongDTO songDTO, Game game);
     Song map(SongDTORequest songDTORequest, Game game);
 }
