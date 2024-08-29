@@ -1,6 +1,7 @@
 package com.sandy.bingo.model.mapper.impl;
 
 import com.sandy.bingo.model.domain.Game;
+import com.sandy.bingo.model.dto.GameBasicDTO;
 import com.sandy.bingo.model.dto.GameDTO;
 import com.sandy.bingo.model.dto.RankingDTO;
 import com.sandy.bingo.model.dto.SongDTO;
@@ -18,6 +19,11 @@ public class GameDTOMapperImpl implements GameDTOMapper {
     @Override
     public Game map(GameDTORequest gameDTORequest) {
         return new Game(gameDTORequest.getTheme());
+    }
+
+    @Override
+    public GameBasicDTO map(Game game) {
+        return new GameBasicDTO(game.getId(), game.getTheme());
     }
 
 }

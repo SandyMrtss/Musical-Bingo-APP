@@ -2,6 +2,7 @@ package com.sandy.bingo.services;
 
 import com.sandy.bingo.model.domain.Game;
 import com.sandy.bingo.model.domain.Player;
+import com.sandy.bingo.model.dto.GameBasicDTO;
 import com.sandy.bingo.model.dto.GameDTO;
 import com.sandy.bingo.model.dto.SongDTO;
 import com.sandy.bingo.model.dto.request.GameDTORequest;
@@ -18,5 +19,6 @@ public interface GameService {
     List<SongDTO> getAllSongs(Game game);
     GameDTO deleteGame(Integer id);
     Game getGame(Integer id);
+    List<GameBasicDTO> getAllGames();
 
 }

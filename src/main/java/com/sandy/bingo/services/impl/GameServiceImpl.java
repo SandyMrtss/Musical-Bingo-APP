@@ -90,6 +90,14 @@ public class GameServiceImpl implements GameService {
         return game.get();
     }
 
+    @Override
+    public List<GameBasicDTO> getAllGames() {
+        List<Game> allGames = gameRepository.findAll();
+        List<GameBasicDTO> allGamesDTO = new ArrayList<>();
+        allGames.forEach(g -> allGamesDTO.add(gameMapper.map(g)));
+        return allGamesDTO;
+    }
+
     private RankingDTO rankingToDTO(Ranking ranking){
         PlayerDTO playerDTO = playerService.getPlayerDTO(ranking.getPlayer().getId());
         return rankingMapper.map(ranking, playerDTO);
